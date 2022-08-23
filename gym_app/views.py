@@ -1,9 +1,7 @@
-from django.shortcuts import render
-from django.http import HttpResponse
-from django.views import View
+from rest_framework import viewsets
+from gym_app.serializers import BookSerializer
 from .models import Book
-from django.shortcuts import render
 
-
-def the_gym(request):
-    return render(request, 'first_temp.html')
+class BookViewSet(viewsets.ModelViewSet):
+    serializer_class = BookSerializer
+    queryset = Book.objects.all()
